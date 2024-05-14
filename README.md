@@ -61,10 +61,10 @@ To get Galaxy Meet running locally on your machine, follow these steps:
 
 Following these steps should get Galaxy Meet up and running locally on your machine using pnpm.
 
-## License 📑
+## 📑 License
 
 Galaxy Meet is open-sourced under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
-## Contact 📫
+## 📫 Contact
 
 If you have any questions or need further assistance with Galaxy Meet, please don't hesitate to reach out via email: [djaidri.chouaib.24@gmail.com](mailto:djaidri.chouaib.24@gmail.com).
