@@ -19,11 +19,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { DEFAULT_FORM_VALUES, FormValues, formSchema } from "./data";
 
-export function LoginForm() {
+export function SignUpForm() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: DEFAULT_FORM_VALUES,
@@ -33,18 +32,18 @@ export function LoginForm() {
     toast({
       title: "You submitted the following values:",
       description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+        <pre className="mt-2 rounded-md bg-slate-950 p-4">
           <code className="text-white">{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
     });
   }
   return (
-    <Card className="mx-auto w-full rounded-none xs:rounded-lg xs:max-w-sm px-2 py-4">
+    <Card className="mx-auto w-full rounded-none xs:rounded-lg xs:max-w-md px-2 py-4">
       <CardHeader>
-        <CardTitle>Login</CardTitle>
+        <CardTitle>Sign Up</CardTitle>
         <CardDescription>
-          Enter your email below to login to your account
+          Enter your information to create an account
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -52,6 +51,34 @@ export function LoginForm() {
           <form onSubmit={form.handleSubmit(onSubmit)}>
             <div className="space-y-8">
               <div className="flex flex-col gap-4">
+                <div className="flex flex-col xs:flex-row gap-4 xs:gap-2">
+                  <FormField
+                    control={form.control}
+                    name="firstName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>First Name</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Chouaib" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="lastName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Last Name</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Djaidri" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
                 <FormField
                   control={form.control}
                   name="email"
@@ -60,7 +87,7 @@ export function LoginForm() {
                       <FormLabel>Email</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="name@email.com"
+                          placeholder="djaidri.chouaib.24@gmail.com"
                           type="email"
                           {...field}
                         />
@@ -86,15 +113,8 @@ export function LoginForm() {
                     </FormItem>
                   )}
                 />
-                <Button
-                  asChild
-                  variant="link"
-                  className="text-sm ml-auto self-end"
-                >
-                  <Link href="#">Forgot your password?</Link>
-                </Button>
-                <Button type="submit" className="w-full">
-                  Login
+                <Button type="submit" className="w-full mt-4">
+                  Create an account
                 </Button>
               </div>
             </div>
