@@ -26,7 +26,7 @@ export function SignUpForm() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: DEFAULT_FORM_VALUES,
-    mode: "onSubmit",
+    mode: "onChange",
   });
   function onSubmit(data: FormValues) {
     toast({

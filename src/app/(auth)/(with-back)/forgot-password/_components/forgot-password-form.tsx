@@ -19,11 +19,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { DEFAULT_FORM_VALUES, FormValues, formSchema } from "./data";
 
-export function LoginForm() {
+export function ForgotPasswordForm() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: DEFAULT_FORM_VALUES,
@@ -40,11 +39,11 @@ export function LoginForm() {
     });
   }
   return (
-    <Card className="mx-auto w-full rounded-none xs:rounded-lg xs:max-w-sm px-2 py-4">
+    <Card className="mx-auto w-full rounded-none xs:rounded-lg xs:max-w-md px-2 py-4">
       <CardHeader>
-        <CardTitle>Login</CardTitle>
+        <CardTitle>Forgot your password?</CardTitle>
         <CardDescription>
-          Enter your email below to login to your account
+          {`Enter your email and we'll send you a link to reset your password.`}
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -69,32 +68,8 @@ export function LoginForm() {
                     </FormItem>
                   )}
                 />
-                <FormField
-                  control={form.control}
-                  name="password"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Password</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="••••••••"
-                          type="password"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <Button
-                  asChild
-                  variant="link"
-                  className="text-sm ml-auto self-end"
-                >
-                  <Link href="/forgot-password">Forgot your password?</Link>
-                </Button>
                 <Button type="submit" className="w-full">
-                  Login
+                  Reset your password
                 </Button>
               </div>
             </div>
