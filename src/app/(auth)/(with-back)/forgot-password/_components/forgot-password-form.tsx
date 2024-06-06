@@ -39,7 +39,7 @@ export function ForgotPasswordForm() {
     });
   }
   return (
-    <Card className="mx-auto w-full rounded-none xs:rounded-lg xs:max-w-md px-2 py-4">
+    <Card className="mx-auto w-full rounded-none xs:rounded-lg xs:max-w-md px-1 xs:px-2 py-4">
       <CardHeader>
         <CardTitle>Forgot your password?</CardTitle>
         <CardDescription>
@@ -69,7 +69,7 @@ export function ForgotPasswordForm() {
                   )}
                 />
                 <Button type="submit" className="w-full">
-                  Reset your password
+                  Reset password
                 </Button>
               </div>
             </div>
