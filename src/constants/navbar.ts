@@ -1,5 +1,3 @@
-import { LinkedInIcon, GithubIcon } from "@/assets/icons/social-media";
-
 export const HOME_NAVBAR_ITEMS = [
   [
     {
@@ -37,12 +35,4 @@ export const HOME_NAVBAR_ITEMS = [
       label: "login",
     },
   ],
-];
-export const SOCIAL_MEDIA = [
-  { Icon: GithubIcon, label: "github", route: "https://github.com/chouaib-dj" },
-  {
-    Icon: LinkedInIcon,
-    label: "linkedin",
-    route: "https://www.linkedin.com/in/chouaib-djaidri-43558b2a7/",
-  },
 ];
