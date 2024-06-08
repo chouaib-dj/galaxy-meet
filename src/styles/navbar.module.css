@@ -1,0 +1,33 @@
+.floatingNav li {
+  position: relative;
+  overflow: hidden;
+}
+.floatingNav li a {
+  display: block;
+  height: 100%;
+}
+.floatingNav li a span {
+  transition: all 0.3s;
+  position: relative;
+  top: 0;
+}
+.floatingNav li a span:first-child {
+  position: relative;
+}
+.floatingNav li a span:last-child {
+  position: absolute;
+  visibility: hidden;
+  left: 0;
+  top: 28px;
+}
+.floatingNav li:hover a span:first-child {
+  top: -28px;
+  opacity: 0;
+  visibility: hidden;
+}
+.floatingNav li:hover a span:last-child {
+  visibility: visible;
+  opacity: 1;
+  top: 0px;
+  color: hsl(var(--primary));
+}

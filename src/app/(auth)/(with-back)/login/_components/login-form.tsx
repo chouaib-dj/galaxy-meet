@@ -40,7 +40,7 @@ export function LoginForm() {
     });
   }
   return (
-    <Card className="mx-auto w-full rounded-none xs:rounded-lg xs:max-w-sm px-1 xs:px-2 py-4">
+    <Card className="mx-auto w-full rounded-none xs:rounded-lg xs:max-w-md px-1 xs:px-2 py-4">
       <CardHeader>
         <CardTitle>Login</CardTitle>
         <CardDescription>

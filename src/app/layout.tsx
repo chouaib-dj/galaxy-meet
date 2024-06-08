@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn("font-poppins", poppins.variable)}>
+      <body className={cn("font-poppins min-h-screen", poppins.variable)}>
         {children}
         <Toaster />
       </body>
