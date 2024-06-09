@@ -5,12 +5,12 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 text-lg",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 text-base lg:text-lg",
   {
     variants: {
       size: {
-        default: "h-11 px-6 py-2",
-        sm: "h-10 px-4 text-base",
+        default: "h-10 lg:h-11 px-6 py-2",
+        sm: "h-10 px-4 lg:text-base",
         lg: "h-12 px-8",
         icon: "h-10 w-10 lg:h-11 lg:w-11",
       },

@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import { screens } from "tailwindcss/defaultTheme";
+import { screens, fontSize } from "tailwindcss/defaultTheme";
 
 const config = {
   darkMode: ["class"],
@@ -79,6 +79,33 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      fontSize: {
+        ...fontSize,
+        "7xl": [
+          "4.5rem",
+          {
+            lineHeight: "1.15",
+          },
+        ],
+        "5xl": [
+          "3rem",
+          {
+            lineHeight: "1.2",
+          },
+        ],
+        "4xl": [
+          "2.25rem",
+          {
+            lineHeight: "1.2",
+          },
+        ],
+        base: [
+          "1rem",
+          {
+            lineHeight: "1.6",
+          },
+        ],
       },
     },
   },
