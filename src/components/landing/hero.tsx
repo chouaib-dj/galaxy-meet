@@ -4,7 +4,7 @@ import { ArrowRight, MoveRightIcon } from "lucide-react";
 
 const Hero = () => {
   return (
-    <div className="min-h-[calc(100dvh-128px)] lg:min-h-[calc(100dvh-160px)] flex items-center justify-center py-8">
+    <section className="min-h-[calc(100dvh-128px)] lg:min-h-[calc(100dvh-160px)] flex items-center justify-center py-8">
       <div className="container px-6 lg:px-8 flex flex-col items-center gap-8 lg:gap-12">
         <p className="border-2 p-2 pl-6 rounded-full border-primary flex items-center gap-4 w-fit text-sm sm:text-base">
           Check out our features
@@ -36,7 +36,7 @@ const Hero = () => {
           </Link>
         </Button>
       </div>
-    </div>
+    </section>
   );
 };
 
