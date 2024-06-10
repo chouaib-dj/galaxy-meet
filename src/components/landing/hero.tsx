@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <section className="min-h-[calc(100dvh-128px)] lg:min-h-[calc(100dvh-160px)] flex items-center justify-center py-8">
       <div className="container px-6 lg:px-8 flex flex-col items-center gap-8 lg:gap-12">
-        <p className="border-2 p-2 pl-6 rounded-full border-primary flex items-center gap-4 w-fit text-sm sm:text-base">
+        <p className="border-2 p-1.5 lg:p-2 pl-6 lg:pl-6 rounded-full border-primary flex items-center gap-4 w-fit text-sm sm:text-base">
           Check out our features
           <Button
             size={"icon"}
@@ -29,7 +29,10 @@ const Hero = () => {
             connect effortlessly, whether for education, or personal use.
           </p>
         </div>
-        <Button asChild className="gap-2 rounded-full px-14">
+        <Button
+          asChild
+          className="gap-2 rounded-full px-14 h-10 lg:h-11 text-base lg:text-lg"
+        >
           <Link href="/login">
             Get Started
             <MoveRightIcon />

@@ -9,14 +9,14 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 h-16 lg:h-20 border-b bg-background">
       <div className="h-full flex items-center justify-between container px-6 lg:px-8">
-        <nav className="font-medium flex items-center lg:gap-20 xl:gap-32 text-base lg:text-lg">
-          <Link
-            href="/"
-            className="flex items-center gap-2 font-semibold uppercase"
-          >
-            <Rocket className="h-6 w-6 lg:h-8 lg:w-8" />
-            <span>galaxy meet</span>
-          </Link>
+        <Link
+          href="/"
+          className="flex items-center gap-2 font-semibold uppercase"
+        >
+          <Rocket className="h-6 w-6 lg:h-8 lg:w-8" />
+          <span>galaxy meet</span>
+        </Link>
+        <nav className="font-medium flex items-center text-base lg:text-lg">
           <ul
             className={cn(
               "lg:flex gap-4 xl:gap-6 flex-shrink-0 relative hidden",
