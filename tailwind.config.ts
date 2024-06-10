@@ -95,7 +95,7 @@ const config = {
           },
         ],
         "4xl": [
-          "2.25rem",
+          "2.5rem",
           {
             lineHeight: "1.2",
           },
