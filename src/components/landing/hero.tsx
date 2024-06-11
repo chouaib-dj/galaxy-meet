@@ -23,7 +23,7 @@ const Hero = () => {
             Your Ultimate <span className="text-primary">Virtual Meeting</span>{" "}
             Space
           </h1>
-          <p className="text-muted-foreground text-sm sm:text-base max-w-3xl lg:max-w-4xl">
+          <p className="text-muted-foreground text-sm sm:text-base lg:text-lg max-w-3xl lg:max-w-4xl">
             Galaxy Meet redefines online communication, providing a seamless and
             intuitive experience for all your virtual interactions. Join us to
             connect effortlessly, whether for education, or personal use.
