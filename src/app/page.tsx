@@ -1,4 +1,5 @@
 import Footer from "@/components/footer";
+import About from "@/components/landing/about";
 import Features from "@/components/landing/features";
 import Hero from "@/components/landing/hero";
 import Testimonials from "@/components/landing/testimonials";
@@ -11,6 +12,7 @@ export default function Home() {
       <main className="min-h-[calc(100dvh-128px)] lg:min-h-[calc(100dvh-160px)]">
         <Hero />
         <Features />
+        <About />
         <Testimonials />
       </main>
       <Footer />

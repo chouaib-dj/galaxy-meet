@@ -36,9 +36,9 @@ const FeedbackCard = ({
 
 const Testimonials = () => {
   return (
-    <section className="pb-24">
-      <div className="container px-6 lg:px-8 flex flex-col items-center gap-12 xl:gap-16">
-        <div className="flex flex-col gap-5 xl:gap-6 text-center items-center">
+    <section className="pb-28">
+      <div className="container px-6 lg:px-8 flex flex-col items-center gap-12 xl:gap-14">
+        <div className="flex flex-col gap-5 text-center items-center">
           <Badge className="bg-teal-500/20 hover:bg-teal-500/20 text-teal-400 text-base">
             Testimonials
           </Badge>

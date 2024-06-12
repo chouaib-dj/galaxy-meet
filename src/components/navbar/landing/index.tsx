@@ -7,7 +7,7 @@ import { HOME_NAVBAR_ITEMS } from "@/constants/navbar";
 import NavbarMobile from "./navbar-mobile";
 const Navbar = () => {
   return (
-    <header className="sticky top-0 h-16 lg:h-20 border-b bg-background">
+    <header className="sticky top-0 h-16 lg:h-20 border-b bg-background z-50">
       <div className="h-full flex items-center justify-between container px-6 lg:px-8">
         <Link
           href="/"

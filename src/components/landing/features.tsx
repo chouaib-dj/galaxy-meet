@@ -13,7 +13,7 @@ const FeatureCard = ({
     >
       <Icon size={36} />
     </div>
-    <h3 className="text-xl xl:text-2xl font-semibold mt-2 lg:max-w-[150px] xl:max-w-full">
+    <h3 className="text-xl lg:text-2xl font-semibold mt-2 lg:max-w-[150px] xl:max-w-full">
       {title}
     </h3>
     <p className="text-muted-foreground text-sm sm:text-base">{description}</p>
@@ -22,9 +22,9 @@ const FeatureCard = ({
 
 const Features = () => {
   return (
-    <section className="pb-24">
-      <div className="container px-6 lg:px-8 flex flex-col items-center gap-12 xl:gap-16">
-        <div className="flex flex-col gap-5 xl:gap-6 text-center items-center">
+    <section className="pb-28">
+      <div className="container px-6 lg:px-8 flex flex-col items-center gap-12 xl:gap-14">
+        <div className="flex flex-col gap-5 text-center items-center">
           <Badge className="bg-indigo-500/20 hover:bg-indigo-500/20 text-indigo-400 text-base">
             Features
           </Badge>

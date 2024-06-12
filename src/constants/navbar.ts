@@ -9,20 +9,16 @@ export const HOME_NAVBAR_ITEMS = [
       label: "features",
     },
     {
-      route: "/testimonials",
-      label: "testimonials",
-    },
-    {
       route: "/about",
       label: "about",
     },
     {
-      route: "/contact",
-      label: "contact",
+      route: "/testimonials",
+      label: "testimonials",
     },
     {
-      route: "/faq",
-      label: "faq",
+      route: "/contact",
+      label: "contact",
     },
   ],
   [
