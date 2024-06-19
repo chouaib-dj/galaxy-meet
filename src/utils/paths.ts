@@ -1,10 +1,16 @@
-export const getURL = () => {
+export const getURL = (path: string = "") => {
   let url =
-    process?.env?.NEXT_PUBLIC_VERCEL_URL ?? // Automatically set by Vercel.
-    "http://localhost:3000/";
-  // Make sure to include `https://` when not localhost.
+    process?.env?.NEXT_PUBLIC_SITE_URL &&
+    process.env.NEXT_PUBLIC_SITE_URL.trim() !== ""
+      ? process.env.NEXT_PUBLIC_SITE_URL
+      : process?.env?.NEXT_PUBLIC_VERCEL_URL &&
+        process.env.NEXT_PUBLIC_VERCEL_URL.trim() !== ""
+      ? process.env.NEXT_PUBLIC_VERCEL_URL
+      : "http://localhost:3000/";
+
+  url = url.replace(/\/+$/, "");
   url = url.includes("http") ? url : `https://${url}`;
-  // Make sure to include a trailing `/`.
-  url = url.charAt(url.length - 1) === "/" ? url : `${url}/`;
-  return url;
+  path = path.replace(/^\/+/, "");
+
+  return path ? `${url}/${path}` : url;
 };

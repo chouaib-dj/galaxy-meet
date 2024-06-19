@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import SubmitButton from "@/components/shared/submit-button";
 import {
   Card,
   CardContent,
@@ -19,25 +19,44 @@ import {
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { useFormState } from "react-dom";
 import { useForm } from "react-hook-form";
-import { DEFAULT_FORM_VALUES, FormValues, formSchema } from "./data";
+import { signup } from "../actions";
+import { DEFAULT_FORM_VALUES, FormKeys, FormValues, formSchema } from "./data";
 
 export function SignUpForm() {
+  const router = useRouter();
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: DEFAULT_FORM_VALUES,
     mode: "onChange",
   });
-  function onSubmit(data: FormValues) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
-  }
+  const [state, action] = useFormState(signup, null);
+  useEffect(() => {
+    if (state?.err) {
+      if (state.err.data) {
+        Object.entries(state.err.data).forEach(([field, message]) => {
+          form.setError(field as FormKeys, { message });
+        });
+      } else {
+        toast({
+          title: state.err.msg,
+          variant: "destructive",
+        });
+      }
+    }
+    if (state?.msg) {
+      toast({
+        title: state.msg.title,
+        description: state.msg.description,
+        variant: "success",
+      });
+      router.push("/login");
+    }
+  }, [state]);
+
   return (
     <Card className="mx-auto w-full rounded-none xs:rounded-lg xs:max-w-md px-1 xs:px-2 py-4">
       <CardHeader>
@@ -48,7 +67,7 @@ export function SignUpForm() {
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
+          <form action={action} noValidate>
             <div className="space-y-8">
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col xs:flex-row gap-4 xs:gap-2">
@@ -113,9 +132,10 @@ export function SignUpForm() {
                     </FormItem>
                   )}
                 />
-                <Button type="submit" className="w-full mt-4">
-                  Create an account
-                </Button>
+                <SubmitButton
+                  btnLabel={{ active: "Create an account" }}
+                  className="w-full mt-4"
+                />
               </div>
             </div>
           </form>

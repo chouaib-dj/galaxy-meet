@@ -21,6 +21,7 @@ export const formSchema = z.object({
     .max(30, "Password must be under 30 characters."),
 });
 export type FormValues = z.infer<typeof formSchema>;
+export type FormKeys = keyof FormValues;
 export const DEFAULT_FORM_VALUES = {
   firstName: "",
   lastName: "",
