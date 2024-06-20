@@ -8,6 +8,7 @@ export const formSchema = z.object({
     .min(8, { message: "Invalid password" }),
 });
 export type FormValues = z.infer<typeof formSchema>;
+export type FormKeys = keyof FormValues;
 export const DEFAULT_FORM_VALUES = {
   email: "",
   password: "",

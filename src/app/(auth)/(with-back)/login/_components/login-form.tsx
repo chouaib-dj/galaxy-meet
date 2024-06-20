@@ -21,24 +21,34 @@ import { toast } from "@/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import { DEFAULT_FORM_VALUES, FormValues, formSchema } from "./data";
+import { DEFAULT_FORM_VALUES, FormKeys, FormValues, formSchema } from "./data";
+import SubmitButton from "@/components/shared/submit-button";
+import { login } from "../actions";
+import { useFormState } from "react-dom";
+import { useEffect } from "react";
 
 export function LoginForm() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: DEFAULT_FORM_VALUES,
-    mode: "onSubmit",
+    mode: "onBlur",
   });
-  function onSubmit(data: FormValues) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
-  }
+  const [state, action] = useFormState(login, null);
+  useEffect(() => {
+    if (state?.err) {
+      if (state.err.data) {
+        Object.entries(state.err.data).forEach(([field, message]) => {
+          form.setError(field as FormKeys, { message });
+        });
+      } else {
+        toast({
+          title: state.err.msg.title,
+          description: state.err.msg.description,
+          variant: "destructive",
+        });
+      }
+    }
+  }, [state]);
   return (
     <Card className="mx-auto w-full rounded-none xs:rounded-lg xs:max-w-md px-1 xs:px-2 py-4">
       <CardHeader>
@@ -49,7 +59,7 @@ export function LoginForm() {
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
+          <form action={action} noValidate>
             <div className="space-y-8">
               <div className="flex flex-col gap-4">
                 <FormField
@@ -93,9 +103,11 @@ export function LoginForm() {
                 >
                   <Link href="/forgot-password">Forgot your password?</Link>
                 </Button>
-                <Button type="submit" className="w-full">
-                  Login
-                </Button>
+                <SubmitButton
+                  btnLabel={{ active: "Login" }}
+                  className="w-full"
+                  disabled={!form.formState.isValid}
+                />
               </div>
             </div>
           </form>
