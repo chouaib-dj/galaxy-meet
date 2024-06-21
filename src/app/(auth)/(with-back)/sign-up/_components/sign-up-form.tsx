@@ -135,6 +135,7 @@ export function SignUpForm() {
                 <SubmitButton
                   btnLabel={{ active: "Create an account" }}
                   className="w-full mt-4"
+                  disabled={!form.formState.isValid}
                 />
               </div>
             </div>

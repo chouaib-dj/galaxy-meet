@@ -1,5 +1,6 @@
 "use client";
 
+import SubmitButton from "@/components/shared/submit-button";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -17,15 +18,15 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { toast } from "@/components/ui/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
-import { useForm } from "react-hook-form";
-import { DEFAULT_FORM_VALUES, FormKeys, FormValues, formSchema } from "./data";
-import SubmitButton from "@/components/shared/submit-button";
-import { login } from "../actions";
-import { useFormState } from "react-dom";
+import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
+import { useFormState } from "react-dom";
+import { useForm } from "react-hook-form";
+import { login } from "../actions";
+import { DEFAULT_FORM_VALUES, FormKeys, FormValues, formSchema } from "./data";
 
 export function LoginForm() {
   const form = useForm<FormValues>({
@@ -34,6 +35,8 @@ export function LoginForm() {
     mode: "onBlur",
   });
   const [state, action] = useFormState(login, null);
+  const searchParams = useSearchParams();
+  const { toast } = useToast();
   useEffect(() => {
     if (state?.err) {
       if (state.err.data) {
@@ -49,6 +52,18 @@ export function LoginForm() {
       }
     }
   }, [state]);
+  useEffect(() => {
+    if (searchParams.get("confirm-error") === "true") {
+      const timer = setTimeout(() => {
+        toast({
+          title: "Email Confirmation Error",
+          description: "There was an issue confirming your email.",
+          variant: "destructive",
+        });
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, []);
   return (
     <Card className="mx-auto w-full rounded-none xs:rounded-lg xs:max-w-md px-1 xs:px-2 py-4">
       <CardHeader>

@@ -5,13 +5,14 @@ import { useFormStatus } from "react-dom";
 
 const SubmitButton = ({
   btnLabel: { active, pending },
+  disabled,
   ...props
 }: {
   btnLabel: { active: React.ReactNode; pending?: React.ReactNode };
 } & ButtonProps) => {
   const { pending: isPending } = useFormStatus();
   return (
-    <Button disabled={isPending} {...props}>
+    <Button disabled={isPending ? true : disabled} {...props}>
       {isPending
         ? pending || (
             <div className="flex items-center gap-2">
