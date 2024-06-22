@@ -1,3 +1,19 @@
+import {
+  CalendarClock,
+  History,
+  Home,
+  LucideIcon,
+  Plus,
+  Settings,
+  Video,
+} from "lucide-react";
+
+export type SidebarMenuItemProps = {
+  route: string;
+  label: string;
+  Icon: LucideIcon;
+};
+
 export const HOME_NAVBAR_ITEMS = [
   [
     {
@@ -29,6 +45,43 @@ export const HOME_NAVBAR_ITEMS = [
     {
       route: "/login",
       label: "login",
+    },
+  ],
+];
+
+export const DASHBOARD_NAVBAR_ITEMS: SidebarMenuItemProps[][] = [
+  [
+    {
+      route: "/",
+      label: "home",
+      Icon: Home,
+    },
+    {
+      route: "/upcoming",
+      label: "upcoming",
+      Icon: CalendarClock,
+    },
+    {
+      route: "/previous",
+      label: "previous",
+      Icon: History,
+    },
+    {
+      route: "/recordings",
+      label: "recordings",
+      Icon: Video,
+    },
+    {
+      route: "/personal-room",
+      label: "personal room",
+      Icon: Plus,
+    },
+  ],
+  [
+    {
+      route: "/settings",
+      label: "settings",
+      Icon: Settings,
     },
   ],
 ];

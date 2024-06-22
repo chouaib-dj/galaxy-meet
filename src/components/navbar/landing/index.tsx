@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import NavbarStyles from "@/styles/navbar.module.css";
 import { HOME_NAVBAR_ITEMS } from "@/constants/navbar";
 import NavbarMobile from "./navbar-mobile";
+
 const Navbar = () => {
   return (
     <header className="sticky top-0 h-16 lg:h-20 border-b bg-background z-50">
@@ -16,7 +17,7 @@ const Navbar = () => {
           <Rocket className="h-6 w-6 lg:h-8 lg:w-8" />
           <span>galaxy meet</span>
         </Link>
-        <nav className="font-medium flex items-center text-base lg:text-lg">
+        <nav className="font-medium flex items-center text-base">
           <ul
             className={cn(
               "lg:flex gap-4 xl:gap-6 flex-shrink-0 relative hidden",
