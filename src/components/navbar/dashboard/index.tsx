@@ -10,7 +10,7 @@ import { SidebarMenuItem } from "./sidebar-menu-item";
 const Sidebar = () => {
   const pathname = usePathname();
   return (
-    <aside className="hidden bg-accent lg:block">
+    <aside className="hidden bg-accent lg:block fixed h-screen lg:w-[280px]">
       <div className="flex h-full max-h-screen flex-col">
         <div className="flex items-center border-b-2 h-20 px-10">
           <Link

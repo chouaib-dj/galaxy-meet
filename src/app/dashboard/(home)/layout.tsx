@@ -7,11 +7,11 @@ const Layout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <div className="grid min-h-screen w-full lg:grid-cols-[280px_1fr]">
+    <div className="min-h-screen w-full">
       <Sidebar />
-      <div className="flex flex-col">
+      <div className="flex flex-col lg:pl-[280px]">
         <SidebarMobile />
-        <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
+        <main className="flex flex-1 flex-col gap-6 p-6 lg:gap-8 lg:p-8">
           {children}
         </main>
       </div>
