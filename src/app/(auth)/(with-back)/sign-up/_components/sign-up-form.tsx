@@ -23,8 +23,8 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useFormState } from "react-dom";
 import { useForm } from "react-hook-form";
-import { signup } from "../actions";
 import { DEFAULT_FORM_VALUES, FormKeys, FormValues, formSchema } from "./data";
+import { FormState, signup } from "@/actions/signup.actions";
 
 export function SignUpForm() {
   const router = useRouter();
@@ -33,7 +33,7 @@ export function SignUpForm() {
     defaultValues: DEFAULT_FORM_VALUES,
     mode: "onChange",
   });
-  const [state, action] = useFormState(signup, null);
+  const [state, action] = useFormState<FormState, FormData>(signup, null);
   useEffect(() => {
     if (state?.err) {
       if (state.err.data) {

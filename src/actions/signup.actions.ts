@@ -1,20 +1,18 @@
 "use server";
 
+import { formSchema } from "@/app/(auth)/(with-back)/sign-up/_components/data";
 import { createClient } from "@/utils/supabase/server";
-import { formSchema } from "./_components/data";
 import { revalidatePath } from "next/cache";
 
-export type FormState =
-  | {
-      err: {
-        msg: string;
-        data: {
-          [key: string]: string;
-        } | null;
-      };
-    }
-  | { msg: { title: string; description: string } }
-  | null;
+export type FormState = {
+  err?: {
+    msg: string;
+    data?: {
+      [key: string]: string;
+    };
+  };
+  msg?: { title: string; description: string };
+} | null;
 
 export const signup = async (state: FormState, formData: FormData) => {
   const validationResult = formSchema.safeParse({
@@ -49,7 +47,7 @@ export const signup = async (state: FormState, formData: FormData) => {
       data: signUpAdditionalData,
     },
   });
-  if (error) return { err: { msg: error.message, data: null } };
+  if (error) return { err: { msg: error.message } };
 
   revalidatePath("/", "layout");
   return {

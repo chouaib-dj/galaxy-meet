@@ -21,12 +21,11 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { useFormState } from "react-dom";
 import { useForm } from "react-hook-form";
-import { login } from "../actions";
 import { DEFAULT_FORM_VALUES, FormKeys, FormValues, formSchema } from "./data";
+import { FormState, login } from "@/actions/login.actions";
 
 export function LoginForm() {
   const form = useForm<FormValues>({
@@ -34,8 +33,7 @@ export function LoginForm() {
     defaultValues: DEFAULT_FORM_VALUES,
     mode: "onBlur",
   });
-  const [state, action] = useFormState(login, null);
-  const searchParams = useSearchParams();
+  const [state, action] = useFormState<FormState, FormData>(login, null);
   const { toast } = useToast();
   useEffect(() => {
     if (state?.err) {
@@ -52,18 +50,6 @@ export function LoginForm() {
       }
     }
   }, [state]);
-  useEffect(() => {
-    if (searchParams.get("confirm-error") === "true") {
-      const timer = setTimeout(() => {
-        toast({
-          title: "Email Confirmation Error",
-          description: "There was an issue confirming your email.",
-          variant: "destructive",
-        });
-      }, 100);
-      return () => clearTimeout(timer);
-    }
-  }, []);
   return (
     <Card className="mx-auto w-full rounded-none xs:rounded-lg xs:max-w-md px-1 xs:px-2 py-4">
       <CardHeader>

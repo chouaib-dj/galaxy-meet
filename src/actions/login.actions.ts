@@ -1,7 +1,7 @@
 "use server";
 
+import { formSchema } from "@/app/(auth)/(with-back)/login/_components/data";
 import { createClient } from "@/utils/supabase/server";
-import { formSchema } from "./_components/data";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 

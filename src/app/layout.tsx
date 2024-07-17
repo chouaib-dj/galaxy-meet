@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
 import "./globals.css";
+import AuthContextProvider from "./contexts/auth-context";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -24,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn("font-poppins min-h-screen", poppins.variable)}>
-        {children}
+        <AuthContextProvider>{children}</AuthContextProvider>
         <Toaster />
       </body>
     </html>

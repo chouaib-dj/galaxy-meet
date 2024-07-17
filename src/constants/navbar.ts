@@ -47,6 +47,12 @@ export const HOME_NAVBAR_ITEMS = [
       label: "login",
     },
   ],
+  [
+    {
+      route: "/dashboard",
+      label: "dashboard",
+    },
+  ],
 ];
 
 export const DASHBOARD_NAVBAR_ITEMS: SidebarMenuItemProps[][] = [
