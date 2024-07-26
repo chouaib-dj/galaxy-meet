@@ -12,7 +12,7 @@ export const tokenProvider = async () => {
   const { data } = await supabase.auth.getSession();
   if (!data.session?.user) throw Error("User is not logged in");
   const issued = Math.round(new Date().getTime() / 1000);
-  const exp = issued + 60 * 5;
+  const exp = issued + 60 * 60;
   const client = new StreamClient(apiKey, secretKey);
   const token = client.createToken(data.session.user.id, exp, issued);
   return token;
